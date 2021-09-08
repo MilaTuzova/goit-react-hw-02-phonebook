@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
-import ContactForm from 'Components/ContactForm/ContactForm';
-import { ContainerContacts } from 'App.styled';
+import ContactForm from 'Components/ContactForm';
+import ContactList from 'Components/ContactList';
+import { ContainerPhonebook, ContainerContacts } from 'App.styled';
 
 class App extends Component {
   state = {
     contacts: [
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: ''
-  }
-  
+    filter: '',
+  };
+
   render() {
+    const { contacts } = this.state;
     return (
       <>
-        <ContainerContacts >
+        <ContainerPhonebook>
           <h1>Phonebook</h1>
           <ContactForm />
-        </ContainerContacts>
+        </ContainerPhonebook>
 
-        <h2>Contacts</h2>
+        <ContainerContacts>
+          <h2>Contacts</h2>
+        </ContainerContacts>
         {/* <Filter/> */}
-        {/* <ContactList */}
+        <ContactList contacts={ contacts } />
       </>
     );
   }
