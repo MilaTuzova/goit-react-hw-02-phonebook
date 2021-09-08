@@ -26,9 +26,10 @@ class App extends Component {
 
         <ContainerContacts>
           <h2>Contacts</h2>
-        </ContainerContacts>
-        {/* <Filter/> */}
+          {/* <Filter/> */}
         <ContactList contacts={ contacts } />
+        </ContainerContacts>
+        
       </>
     );
   }
