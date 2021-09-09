@@ -15,6 +15,12 @@ class App extends Component {
     filter: '',
   };
 
+  deleteContacts = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(cont => cont.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts } = this.state;
     return (
@@ -27,9 +33,8 @@ class App extends Component {
         <ContainerContacts>
           <h2>Contacts</h2>
           {/* <Filter/> */}
-        <ContactList contacts={ contacts } />
+          <ContactList contacts={contacts} onContactDelete={this.deleteContacts} />
         </ContainerContacts>
-        
       </>
     );
   }
