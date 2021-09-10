@@ -23,7 +23,6 @@ class App extends Component {
       : this.setState(({ contacts }) => ({
           contacts: [newContact, ...contacts],
         }));
-    console.log(this.state);
   };
 
   deleteContacts = contactId => {
@@ -45,10 +44,7 @@ class App extends Component {
 
   render() {
     const { filter } = this.state;
-
     const visibleContact = this.getVisibleContact();
-
-    console.log(visibleContact);
 
     return (
       <Container>
