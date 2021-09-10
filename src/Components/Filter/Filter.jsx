@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, Input } from './Filter.styled';
+import { Label, Input } from './Filter.styled';
 
 const Filter = ({ filter, onContactFind }) => (
   <div>
-    <Text>Find contacts by name </Text>
+    <Label>Find contacts by name 
     <Input type="text" value={filter} onChange={onContactFind} />
+    </Label>
   </div>
 );
 

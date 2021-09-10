@@ -3,27 +3,22 @@ import { v4 as uuidv4 } from 'uuid';
 import { FormContact, Label, Input, Btn } from './ContactForm.styled';
 
 class ContactForm extends Component {
-  state = { name: '', number: '', id: ''}
+  state = { name: '', number: '', id: '' };
 
   nameId = uuidv4();
   numberId = uuidv4();
 
-
   handleChange = evt => {
- 
     // console.log(evt.currentTarget.value);
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
-    
   };
 
   handleSubmit = evt => {
-        evt.preventDefault();
-        
-// console.log(this.state.name)
+    evt.preventDefault();
+    // console.log(this.state.name)
     this.props.onSubmit(this.state);
-
-    // this.reset();
+    this.reset();
   };
 
   reset = () => {
@@ -33,7 +28,7 @@ class ContactForm extends Component {
   render() {
     return (
       <>
-        <FormContact onSubmit={this.handleSubmit} >
+        <FormContact onSubmit={this.handleSubmit}>
           <Label htmlFor={this.nameId}>
             Name
             <Input

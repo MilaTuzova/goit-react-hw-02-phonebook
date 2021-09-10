@@ -12,16 +12,6 @@ class App extends Component {
     filter: '',
   };
 
-  findContactByName = evt => {
-    this.setState({ filter: evt.currentTarget.value });
-  };
-
-  deleteContacts = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(cont => cont.id !== contactId),
-    }));
-  };
-
   formSubmitHandler = ({ name, number }) => {
     const newContact = { name, number, id: uuidv4() };
     const { contacts } = this.state;
@@ -30,14 +20,36 @@ class App extends Component {
 
     findContact
       ? alert(`${newContact.name} is already in contacts!`)
-      : this.setState(prevStage => ({
-          contacts: [...prevStage.contacts, newContact],
+      : this.setState(({ contacts }) => ({
+          contacts: [newContact, ...contacts],
         }));
+    console.log(this.state);
+  };
+
+  deleteContacts = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(cont => cont.id !== contactId),
+    }));
+  };
+
+  findContactByName = evt => {
+    this.setState({ filter: evt.currentTarget.value });
+  };
+
+  getVisibleContact = () => {
+    const { filter, contacts } = this.state;
+    const normalizeFilter = filter.toLowerCase();
+
+    return contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter));
   };
 
   render() {
-    const { contacts } = this.state;
     const { filter } = this.state;
+
+    const visibleContact = this.getVisibleContact();
+
+    console.log(visibleContact);
+
     return (
       <Container>
         <h1>Phonebook</h1>
@@ -45,7 +57,7 @@ class App extends Component {
 
         <h2>Contacts</h2>
         <Filter filter={filter} onContactFind={this.findContactByName} />
-        <ContactList contacts={contacts} onContactDelete={this.deleteContacts} />
+        <ContactList contacts={visibleContact} onContactDelete={this.deleteContacts} />
       </Container>
     );
   }
