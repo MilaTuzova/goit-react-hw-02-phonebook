@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { FormContact, Label, Input, Btn } from './ContactForm.styled';
 
 class ContactForm extends Component {
   state = { name: '', number: '', id: '' };
-
-  nameId = uuidv4();
-  numberId = uuidv4();
 
   handleChange = evt => {
     // console.log(evt.currentTarget.value);
@@ -40,7 +36,6 @@ class ContactForm extends Component {
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
               onChange={this.handleChange}
-              id={this.nameId}
             />
           </Label>
 
@@ -55,7 +50,6 @@ class ContactForm extends Component {
               title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
               required
               onChange={this.handleChange}
-              id={this.numberId}
             />
           </Label>
           <Btn type="submit">Add contact</Btn>

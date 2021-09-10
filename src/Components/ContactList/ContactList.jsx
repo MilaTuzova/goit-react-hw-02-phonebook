@@ -1,6 +1,5 @@
 import React from 'react';
-import { List, Btn, Text } from './ContactList.styled'
-
+import { List, Btn, Text } from './ContactList.styled';
 
 const ContactList = ({ contacts, onContactDelete }) => (
   <ul>
