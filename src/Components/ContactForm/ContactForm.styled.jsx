@@ -8,7 +8,7 @@ export const FormContact = styled.form`
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 6px;
-`;
+  `;
 
 export const Label = styled.label`
   display: flex;
